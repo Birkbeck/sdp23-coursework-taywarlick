@@ -62,24 +62,27 @@ public final class Translator {
      * with its label already removed.
      */
     private Instruction getInstruction(String label) {
-        if (line.isEmpty())
-            return null;
+        {
+            if (line.isEmpty())
+                return null;
 
-        String opcode = scan();
-        switch (opcode) {
-            case AddInstruction.OP_CODE -> {
-                String r = scan();
-                String s = scan();
-                return new AddInstruction(label, Register.valueOf(r), Register.valueOf(s));
+            String opcode = scan();
+            switch (opcode) {
+                case AddInstruction.OP_CODE -> {
+                    String r = scan();
+                    String s = scan();
+                    return new AddInstruction(label, Register.valueOf(r), Register.valueOf(s));
+                }
             }
             switch (opcode) {
-            case SubtractInstruction.OP_CODE -> {
-                String s = scan();
-                String r = scan();
-                return new SubtractInstruction(label, Register.valueOf(s), Register.valueOf(r));
+                case SubtractInstruction.OP_CODE -> {
+                    String s = scan();
+                    String r = scan();
+                    return new SubtractInstruction(label, Register.valueOf(s), Register.valueOf(r));
+                }
             }
-            switch (opcode){
-            case MultiplyInstruction.OP_CODE -> {
+            switch (opcode) {
+                case MultiplyInstruction.OP_CODE -> {
                     String r = scan();
                     String s = scan();
                     return new MultiplyInstruction(label, Register.valueOf(r), Register.valueOf(s));
@@ -97,8 +100,10 @@ public final class Translator {
                     String s = scan();
                     return new PrintInstruction(label, Register.valueOf(s));
                 }
+                default -> {
+                    System.out.println("Unknown instruction: " + opcode);
+                }
             }
-        }
             // TODO: add code for all other types of instructions
 
             // TODO: Then, replace the switch by using the Reflection API
@@ -106,13 +111,9 @@ public final class Translator {
             // TODO: Next, use dependency injection to allow this machine class
             //       to work with different sets of opcodes (different CPUs)
 
-            default -> {
-                System.out.println("Unknown instruction: " + opcode);
-            }
+            return null;
         }
-        return null;
     }
-
 
     private String getLabel() {
         String word = scan();

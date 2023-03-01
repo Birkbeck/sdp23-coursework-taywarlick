@@ -16,9 +16,16 @@ public class PrintInstruction extends Instruction {
         this.result = result;
         this.source = source;
     }
+
+    public PrintInstruction(String label, Registers.Register result) {
+        super(label, OP_CODE);
+        this.result = result;
+        this.source = source;
+    }
+
     public int execute(Machine m) {
         int value1 = m.getRegisters().get(result);
-        System.out.println(Register.valueOf(s));
+        System.out.println(Registers.valueOf(s));
     }
 
     @Override
