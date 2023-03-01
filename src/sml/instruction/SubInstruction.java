@@ -3,6 +3,7 @@ package sml.instruction;
 import sml.Instruction;
 import sml.Machine;
 import sml.RegisterName;
+import sml.Registers;
 
 // TODO: write a JavaDoc for the class
 
@@ -18,7 +19,7 @@ public class SubInstruction extends Instruction {
 
     public static final String OP_CODE = "sub";
 
-public class SubInstruction {
+    public class SubInstruction {
     public SubInstruction(String label, RegisterName result, RegisterName source) {
         super(label, OP_CODE);
         this.result = result;
@@ -36,5 +37,6 @@ public class SubInstruction {
     public String toString() {
         return getLabelString() + getOpcode() + " " + result + " " + source;
     }
-}
-}
+}}
+
+
