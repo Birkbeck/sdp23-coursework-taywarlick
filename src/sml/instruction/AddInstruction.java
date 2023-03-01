@@ -21,7 +21,6 @@ public class AddInstruction extends Instruction {
 		this.result = result;
 		this.source = source;
 	}
-
 	@Override
 	public int execute(Machine m) {
 		int value1 = m.getRegisters().get(result);
