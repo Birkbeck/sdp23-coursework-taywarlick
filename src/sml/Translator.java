@@ -73,10 +73,10 @@ public final class Translator {
                 return new AddInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
             switch (opcode) {
-            case SubInstruction.OP_CODE -> {
+            case SubtractInstruction.OP_CODE -> {
                 String s = scan();
                 String r = scan();
-                return new SubInstruction(label, Register.valueOf(s), Register.valueOf(r));
+                return new SubtractInstruction(label, Register.valueOf(s), Register.valueOf(r));
             }
             switch (opcode){
             case MultiplyInstruction.OP_CODE -> {
@@ -90,6 +90,12 @@ public final class Translator {
                     String r = scan();
                     String s = scan();
                     return new DivideInstruction(label, Register.valueOf(r), Register.valueOf(s));
+                }
+            }
+            switch (opcode) {
+                case PrintInstruction.OP_CODE -> {
+                    String s = scan();
+                    return new PrintInstruction(label, Register.valueOf(s));
                 }
             }
         }
