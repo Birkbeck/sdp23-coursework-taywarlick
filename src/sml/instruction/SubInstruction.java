@@ -3,7 +3,7 @@ package sml.instruction;
 import sml.Instruction;
 import sml.Machine;
 import sml.RegisterName;
-import sml.Registers;
+
 
 // TODO: write a JavaDoc for the class
 
@@ -29,7 +29,7 @@ public class SubInstruction extends Instruction {
     public int execute(Machine m) {
         int value1 = m.getRegisters().get(result);
         int value2 = m.getRegisters().get(source);
-        m.getRegisters().set(result, value1 + value2);
+        m.getRegisters().set(result, value1 - value2);
         return NORMAL_PROGRAM_COUNTER_UPDATE;
     }
 
